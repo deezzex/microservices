@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  appication:
+    name: customer
+  datasource:
+    username: deezzex
+    url: jdbc:postgresql://localhost:5432/customer
+    password: password
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+
+
+
