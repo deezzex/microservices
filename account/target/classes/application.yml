@@ -1,25 +1,21 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   appication:
-    name: customer
+    name: account
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:/db/changelog/db.changelog-master.yaml
   datasource:
     username: deezzex
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://localhost:5432/account
     password: password
   jpa:
-    generate-ddl: false
+    generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         format_sql: true
-
-
-
-
