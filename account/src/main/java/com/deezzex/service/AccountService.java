@@ -45,7 +45,7 @@ public class AccountService {
         Optional<Account> maybeAccount = repository.findById(accountId);
         Account account = maybeAccount.get();
 
-        Customer customer = restTemplate.getForObject("http://localhost:8080/api/v1/customer/{customerId}",
+        Customer customer = restTemplate.getForObject("http://CUSTOMER-SERVICE/api/v1/customer/{customerId}",
                 Customer.class, account.getCustomerId());
 
         if (Objects.nonNull(customer)){

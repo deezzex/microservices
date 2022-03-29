@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -73,5 +74,52 @@ public class CustomerService {
         }catch (Exception e) {
             throw new CustomerException(HttpStatus.BAD_REQUEST, "Couldn't get customer", e);
         }
+    }
+
+    @Transactional
+    public CustomerReadDto updateCustomer(Long id, CustomerReadDto customerInfo) {
+        try {
+            Optional<Customer> maybeCustomer = repository.findById(id);
+
+            if (maybeCustomer.isEmpty()){
+                throw new CustomerException(HttpStatus.BAD_REQUEST,
+                        "Customer with id: " + id + " doesn't exists");
+            }
+
+            Customer customer = maybeCustomer.get();
+
+            customer.setFirstName(customerInfo.getFirstName());
+            customer.setLastName(customerInfo.getLastName());
+            customer.setEmail(customerInfo.getEmail());
+            customer.setBirthDate(customerInfo.getBirthDate());
+
+            return CustomerReadDto.builder()
+                    .firstName(customer.getFirstName())
+                    .lastName(customer.getLastName())
+                    .email(customer.getEmail())
+                    .birthDate(customer.getBirthDate())
+                    .build();
+
+        }catch (Exception e) {
+            throw new CustomerException(HttpStatus.BAD_REQUEST, "Could not update customer");
+        }
+    }
+
+    public boolean deleteCustomer(Long id) {
+        try {
+            Optional<Customer> maybeCustomer = repository.findById(id);
+
+            if (maybeCustomer.isEmpty()){
+                throw new CustomerException(HttpStatus.BAD_REQUEST,
+                        "Customer with id: " + id + " doesn't exists");
+            }
+
+            repository.delete(maybeCustomer.get());
+
+            return true;
+        }catch (Exception e) {
+            throw new CustomerException(HttpStatus.BAD_REQUEST, "Could not delete customer");
+        }
+
     }
 }
