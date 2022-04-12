@@ -13,7 +13,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/customer")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
 
     private final CustomerService service;

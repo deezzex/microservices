@@ -3,7 +3,6 @@ package com.deezzex.controller;
 import com.deezzex.customer.ResponseTemplate;
 import com.deezzex.dto.CreateRequest;
 import com.deezzex.dto.CreateResponse;
-import com.deezzex.entity.Account;
 import com.deezzex.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/account")
+@RequestMapping("/api/v1/accounts")
 public class AccountController {
 
     private final AccountService service;
