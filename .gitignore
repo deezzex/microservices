@@ -4,3 +4,4 @@ service-registry/target/
 customer/target/
 account/target/
 api-gateway/target/
+config-server/target/

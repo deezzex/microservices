@@ -6,22 +6,21 @@ import com.deezzex.dto.RegisterResponse;
 import com.deezzex.entity.Customer;
 import com.deezzex.exception.CustomerException;
 import com.deezzex.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CustomerService {
+
     private final CustomerRepository repository;
 
-    @Autowired
-    public CustomerService(CustomerRepository repository) {
-        this.repository = repository;
-    }
-
+    @Transactional
     public RegisterResponse createCustomer(RegisterRequest inputCustomer) {
         try{
 
@@ -105,6 +104,7 @@ public class CustomerService {
         }
     }
 
+    @Transactional
     public boolean deleteCustomer(Long id) {
         try {
             Optional<Customer> maybeCustomer = repository.findById(id);

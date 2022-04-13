@@ -4,6 +4,7 @@ import com.deezzex.dto.CustomerReadDto;
 import com.deezzex.dto.RegisterRequest;
 import com.deezzex.dto.RegisterResponse;
 import com.deezzex.service.CustomerService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,14 +15,10 @@ import static org.springframework.http.HttpStatus.OK;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/customers")
+@RequiredArgsConstructor
 public class CustomerController {
 
     private final CustomerService service;
-
-    @Autowired
-    public CustomerController(CustomerService service) {
-        this.service = service;
-    }
 
     @PostMapping
     public ResponseEntity<RegisterResponse> registerCustomer(@RequestBody RegisterRequest customer) {

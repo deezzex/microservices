@@ -15,11 +15,6 @@ spring:
           uri: lb://ACCOUNT-SERVICE
           predicates:
             - Path=/api/v1/accounts/**
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: localhost
+
+  main:
+    web-application-type: reactive
