@@ -26,7 +26,7 @@ public class AccountController {
 
         log.info("Account successfully created {}", inputAccount.getName());
 
-        return new ResponseEntity<>(createdAccount, HttpStatus.OK);
+        return new ResponseEntity<>(createdAccount, HttpStatus.CREATED);
     }
 
     @GetMapping(path = "{id}")

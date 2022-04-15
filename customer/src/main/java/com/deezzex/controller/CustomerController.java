@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @Slf4j
@@ -27,7 +28,7 @@ public class CustomerController {
         RegisterResponse savedCustomer = service.createCustomer(customer);
         log.info("Customer successfully registered {}", savedCustomer.getEmail());
 
-        return new ResponseEntity<>(savedCustomer, OK);
+        return new ResponseEntity<>(savedCustomer, CREATED);
     }
 
     @GetMapping(path = "{id}")
