@@ -1,15 +1,15 @@
 server:
-  port: 8081
+  port: 8083
 
 spring:
   application:
-    name: ACCOUNT-SERVICE
+    name: LOGIN-SERVICE
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.yaml
   datasource:
     username: deezzex
-    url: jdbc:postgresql://localhost:5432/account
+    url: jdbc:postgresql://localhost:5432/customer
     password: password
   jpa:
     generate-ddl: false
@@ -19,3 +19,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+
+
+
+

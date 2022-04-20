@@ -1,11 +1,16 @@
 package com.deezzex.config;
 
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.filter.ratelimit.RedisRateLimiter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
 
 @Configuration
@@ -28,11 +33,17 @@ public class GatewayConfig {
     @Bean
     public RedisRateLimiter redisRateLimiter()
     {
-        return new RedisRateLimiter(1,2);
+        return new RedisRateLimiter(3,3);
     }
 
     @Bean
-    KeyResolver apiKeyResolver() {
+    public KeyResolver apiKeyResolver() {
         return exchange -> Mono.just(exchange.getRequest().getPath().value());
+    }
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

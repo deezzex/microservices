@@ -8,6 +8,7 @@ import com.deezzex.exception.CustomerException;
 import com.deezzex.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class CustomerService {
 
     private final CustomerRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public RegisterResponse createCustomer(RegisterRequest inputCustomer) {
@@ -31,12 +33,15 @@ public class CustomerService {
                         "Customer with " + inputCustomer.getEmail() + " already exists");
             }
 
+
             Customer customerForSave = Customer.builder()
                     .firstName(inputCustomer.getFirstName())
                     .lastName(inputCustomer.getLastName())
                     .email(inputCustomer.getEmail())
                     .birthDate(inputCustomer.getBirthDate())
                     .build();
+
+            customerForSave.setPassword(passwordEncoder.encode(inputCustomer.getPassword()));
 
             Customer savedCustomer = repository.save(customerForSave);
 
@@ -100,7 +105,7 @@ public class CustomerService {
                     .build();
 
         }catch (Exception e) {
-            throw new CustomerException(HttpStatus.BAD_REQUEST, "Could not update customer");
+            throw new CustomerException(HttpStatus.BAD_REQUEST, "Could not update customer", e);
         }
     }
 
@@ -118,7 +123,7 @@ public class CustomerService {
 
             return true;
         }catch (Exception e) {
-            throw new CustomerException(HttpStatus.BAD_REQUEST, "Could not delete customer");
+            throw new CustomerException(HttpStatus.BAD_REQUEST, "Could not delete customer", e);
         }
 
     }
