@@ -7,6 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * POJO class, entity customer model in database.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

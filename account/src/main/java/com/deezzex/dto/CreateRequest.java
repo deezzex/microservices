@@ -5,6 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * POJO class, DTO for receiving JSON object from request body on creation new account.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -6,11 +6,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * POJO class, which contains account and related customer, class for responding data
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ResponseTemplate {
+public class AccountWithCustomer {
     private Customer customer;
     private Account account;
 }

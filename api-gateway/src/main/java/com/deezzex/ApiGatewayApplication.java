@@ -12,7 +12,5 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class ApiGatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiGatewayApplication.class, args);
-        // TODO: Security https://medium.com/@mool.smreeti/microservices-with-spring-boot-authentication-with-jwt-and-spring-security-6e10155d9db0
     }
-
 }

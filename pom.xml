@@ -15,12 +15,11 @@
       <module>service-registry</module>
       <module>api-gateway</module>
       <module>config-server</module>
-      <module>admin</module>
       <module>login</module>
   </modules>
 
   <name>deezzexservices</name>
-  <!-- FIXME change it to the project's website -->
+
   <url>https://www.deezzex.com</url>
 
   <properties>

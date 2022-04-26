@@ -10,6 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * POJO class, entity account model in database.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Entity
 @Data
 @AllArgsConstructor

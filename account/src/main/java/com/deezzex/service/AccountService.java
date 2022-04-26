@@ -1,7 +1,7 @@
 package com.deezzex.service;
 
 import com.deezzex.customer.Customer;
-import com.deezzex.customer.ResponseTemplate;
+import com.deezzex.customer.AccountWithCustomer;
 import com.deezzex.dto.CreateRequest;
 import com.deezzex.dto.CreateResponse;
 import com.deezzex.entity.Account;
@@ -16,6 +16,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * Service layer class for computing accounts
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -24,7 +30,12 @@ public class AccountService {
     private final AccountRepository repository;
     private final RestTemplate restTemplate;
 
-
+    /**
+     * Method for creating new account in DB
+     * @exception AccountException if something went wrong in saving data in DB
+     * @param inputAccount account data from request
+     * @return response with data about successfully created account
+     **/
     @Transactional
     public CreateResponse createAccount(CreateRequest inputAccount) {
         try {
@@ -48,7 +59,13 @@ public class AccountService {
         }
     }
 
-    public ResponseTemplate getAccountWithOwner(Long accountId) {
+    /**
+     * Method for getting account and appropriate customer by account id
+     * @exception AccountException if something went wrong in getting account or customer from other service
+     * @param accountId id of account which we want to get
+     * @return response with data about account and its owner
+     **/
+    public AccountWithCustomer getAccountWithOwner(Long accountId) {
         try {
             Optional<Account> maybeAccount = repository.findById(accountId);
 
@@ -66,7 +83,7 @@ public class AccountService {
                 customer.setId(account.getCustomerId());
             }
 
-            return ResponseTemplate.builder()
+            return AccountWithCustomer.builder()
                     .account(account)
                     .customer(customer)
                     .build();

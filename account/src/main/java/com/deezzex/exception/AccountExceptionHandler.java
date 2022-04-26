@@ -8,9 +8,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * Custom exception handler class for account exceptions, extended from ResponseEntityExceptionHandler.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Slf4j
 @ControllerAdvice
 public class AccountExceptionHandler extends ResponseEntityExceptionHandler {
+
+    /**
+     * Method for handling AccountException and returning appropriate response
+     * @param ex caused exception
+     * @param request web request
+     * @return Response entity with appropriate status code and body as a message from exception
+     **/
     @ExceptionHandler(value = {AccountException.class})
     public ResponseEntity<Object> handleCustomerException(AccountException ex, WebRequest request) {
         String bodyOfResponse = ex.getMessage();
