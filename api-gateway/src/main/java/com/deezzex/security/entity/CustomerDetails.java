@@ -10,6 +10,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Class for security context of customer, extended from UserDetails
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

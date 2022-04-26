@@ -11,12 +11,23 @@ import reactor.core.publisher.Mono;
 
 import java.util.Objects;
 
+/**
+ * Service layer in security context of gateway service, extended from ReactiveUserDetailsService
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Service
 @RequiredArgsConstructor
 public class CustomerDetailsService implements ReactiveUserDetailsService {
 
     private final RestTemplate restTemplate;
 
+    /**
+     * Method for searching customer in DB for authentication
+     * @param username for getting from login service customer by it
+     * @return Mono object of got customer
+     **/
     @Override
     public Mono<UserDetails> findByUsername(String username) {
 

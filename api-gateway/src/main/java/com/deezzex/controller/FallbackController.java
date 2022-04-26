@@ -1,8 +1,13 @@
 package com.deezzex.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * The controller for fallback REST endpoints.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
 
 @RestController
 public class FallbackController {
