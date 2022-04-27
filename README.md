@@ -7,3 +7,10 @@
 * Service Registry, eureka server 
 * API Gateway, service for request routing and management, cloud gateway
 * Config Server, service which get configs from GitHub repo and set this configs to other services
+* Login service using in api gateway for security
+
+**Also in docker compose run 3 containers**
+
+* PostgreSQL server
+* PGAdmin
+* Redis stack server
