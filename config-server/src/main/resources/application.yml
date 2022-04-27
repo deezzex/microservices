@@ -10,3 +10,4 @@ spring:
         git:
           uri: https://github.com/deezzex/config-server
           clone-on-start: true
+

@@ -2,6 +2,12 @@ package com.deezzex.exception;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * Custom exception class for login service, extended from RuntimeException and modified
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 public class LoginException extends RuntimeException{
     private final HttpStatus httpStatus;
     private final String message;

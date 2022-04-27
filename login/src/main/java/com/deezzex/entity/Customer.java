@@ -11,11 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
-@Entity
+/**
+ * POJO class, entity customer model in database.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

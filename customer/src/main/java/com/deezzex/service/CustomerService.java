@@ -14,6 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Service layer class for computing customers
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -22,6 +28,12 @@ public class CustomerService {
     private final CustomerRepository repository;
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * Method for creating new customer in DB
+     * @exception CustomerException if something went wrong in saving data in DB
+     * @param inputCustomer customer data from request
+     * @return response with data about successfully created customer
+     **/
     @Transactional
     public RegisterResponse createCustomer(RegisterRequest inputCustomer) {
         try{
@@ -58,6 +70,12 @@ public class CustomerService {
         }
     }
 
+    /**
+     * Method for getting customer from DB by id
+     * @exception CustomerException if something went wrong in getting customer from DB
+     * @param id of customer which we want to get
+     * @return response with data about customer
+     **/
     public CustomerReadDto getCustomer(Long id) {
         try {
             Optional<Customer> maybeCustomer = repository.findById(id);
@@ -80,6 +98,13 @@ public class CustomerService {
         }
     }
 
+    /**
+     * Method for updating customer in DB by id
+     * @exception CustomerException if something went wrong in updating customer
+     * @param id of customer which we want to update
+     * @param customerInfo data for updating
+     * @return response with data about updated customer
+     **/
     @Transactional
     public CustomerReadDto updateCustomer(Long id, CustomerReadDto customerInfo) {
         try {
@@ -109,6 +134,12 @@ public class CustomerService {
         }
     }
 
+    /**
+     * Method for deleting customer from DB by id
+     * @exception CustomerException if something went wrong in deleting customer from DB
+     * @param id of customer which we want to delete
+     * @return response boolean which shows status of deletion
+     **/
     @Transactional
     public boolean deleteCustomer(Long id) {
         try {

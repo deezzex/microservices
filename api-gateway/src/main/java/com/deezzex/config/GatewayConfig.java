@@ -34,7 +34,7 @@ public class GatewayConfig {
                 .route(r -> r.path("/api/v1/accounts/**")
                         .filters(f -> f.circuitBreaker(config -> config.setName("ACCOUNT-SERVICE").setFallbackUri("redirect:/accountFallback"))
                                 .requestRateLimiter().configure(config -> config.setRateLimiter(redisRateLimiter())))
-                        .uri("http://localhost:8082/"))
+                        .uri("http://localhost:8081/"))
                 .build();
     }
 

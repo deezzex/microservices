@@ -6,6 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Customer repository for interacting with database, extended from JpaRepository
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Optional<Customer> findByEmail(String email);

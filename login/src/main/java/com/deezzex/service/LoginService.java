@@ -11,6 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Service layer class for login
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -18,6 +24,12 @@ public class LoginService {
 
     private final CustomerRepository repository;
 
+    /**
+     * Method for getting customer from DB by id
+     * @exception LoginException if something went wrong in getting customer from DB
+     * @param email of customer which we want to get
+     * @return response with data about customer
+     **/
     public LoginDto findCustomerByEmail(String email){
         try {
             Optional<Customer> maybeCustomer = repository.findByEmail(email);

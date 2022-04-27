@@ -7,10 +7,16 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * POJO class, DTO for responding JSON object on creation new customer.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RegisterResponse {
     private Long id;
     private String firstName;

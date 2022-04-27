@@ -55,7 +55,7 @@ public class AccountService {
                     .build();
 
         }catch (Exception e) {
-            throw new AccountException(HttpStatus.BAD_REQUEST, "Couldn't create account");
+            throw new AccountException(HttpStatus.BAD_REQUEST, "Couldn't create account", e);
         }
     }
 
@@ -89,7 +89,7 @@ public class AccountService {
                     .build();
 
         }catch (Exception e) {
-            throw new AccountException(HttpStatus.BAD_REQUEST, "Couldn't get account with owner");
+            throw new AccountException(HttpStatus.BAD_REQUEST, "Couldn't get account with owner", e);
         }
     }
 }

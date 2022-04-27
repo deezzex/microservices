@@ -7,10 +7,16 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * POJO class, DTO for receiving JSON object from request body on creation new customer.
+ * @version 1
+ * @author Sviatoslav Pshtir
+ **/
+
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RegisterRequest {
     private String firstName;
     private String lastName;
