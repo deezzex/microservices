@@ -3,6 +3,7 @@ package com.deezzex.service;
 import com.deezzex.dto.CustomerReadDto;
 import com.deezzex.dto.RegisterRequest;
 import com.deezzex.dto.RegisterResponse;
+import com.deezzex.email.SendEmailInfo;
 import com.deezzex.entity.Customer;
 import com.deezzex.exception.CustomerException;
 import com.deezzex.repository.CustomerRepository;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Optional;
 
@@ -27,6 +29,7 @@ public class CustomerService {
 
     private final CustomerRepository repository;
     private final PasswordEncoder passwordEncoder;
+    private final RestTemplate restTemplate;
 
     /**
      * Method for creating new customer in DB

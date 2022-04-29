@@ -3,6 +3,8 @@ package com.deezzex.controller;
 import com.deezzex.customer.AccountWithCustomer;
 import com.deezzex.dto.CreateRequest;
 import com.deezzex.dto.CreateResponse;
+import com.deezzex.dto.ReadAccountDto;
+import com.deezzex.dto.TransactionDetails;
 import com.deezzex.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -53,5 +55,17 @@ public class AccountController {
         log.info("Successfully founded account with id {}", id);
 
         return new ResponseEntity<>(accountWithOwner, HttpStatus.OK);
+    }
+
+
+    @PutMapping(path = "{id}")
+    public ResponseEntity<ReadAccountDto> makeTransaction(@PathVariable("id") Long id, @RequestBody TransactionDetails transactionDetails) {
+        log.info("Try to make transaction in account with id {}", id);
+
+        ReadAccountDto readAccountDto = service.makeTransaction(transactionDetails.getAmount(), id);
+
+        log.info("Successfully made transaction in account with id {}", id);
+
+        return new ResponseEntity<>(readAccountDto, HttpStatus.OK);
     }
 }

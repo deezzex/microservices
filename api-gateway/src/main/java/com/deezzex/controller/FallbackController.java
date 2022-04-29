@@ -22,9 +22,9 @@ public class FallbackController {
         return "Oops... Account service is unavailable. Please try again later.";
     }
 
-    @GetMapping("/loginFallback")
+    @GetMapping("/emailFallback")
     public String loginFallback() {
-        return "Oops... Login service is unavailable. Please try again later.";
+        return "Oops... Email service is unavailable. Please try again later.";
     }
 
 }

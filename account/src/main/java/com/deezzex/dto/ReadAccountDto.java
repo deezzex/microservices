@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * POJO class, DTO for receiving JSON object from request body on creation new account.
+ * POJO class, DTO for sending response.
  * @version 1
  * @author Sviatoslav Pshtir
  **/
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateRequest {
+public class ReadAccountDto {
     private String name;
     private Double amount;
     private Long customerId;
