@@ -10,7 +10,7 @@
 * Login service using in api gateway for security
 * Email sender service for notification customer after transaction
 
-**Also in docker compose run 3 containers**
+**Also in docker compose run 4 containers**
 
 * PostgreSQL server
 * PGAdmin
